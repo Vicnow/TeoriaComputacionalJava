@@ -20,7 +20,7 @@ public class TeoriaComputacional {
     public static void main(String[] args) {
         Alfabeto alfabeto = new Alfabeto("01");
         System.out.println("Alfabeto: " + alfabeto);
-        Cadena cadena = new Cadena("Hola como estas saul");
+        Cadena cadena = new Cadena("MakingAwesomeShit");
         System.out.println("Cadena: " + cadena);
         System.out.println(cadena.potenciar(5));
         System.out.println(cadena.invertir());
