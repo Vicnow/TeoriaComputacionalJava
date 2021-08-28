@@ -48,9 +48,13 @@ public class TeoriaComputacional {
             }
         }
 
-        Cadena [] losprefijos = cadena.obtenerTodosLosPrefijos(cadena);
-        for (Cadena prefijo : losprefijos) {
+        Cadena [] losPrefijos = cadena.obtenerTodosLosPrefijos(cadena);
+        for (Cadena prefijo : losPrefijos) {
             System.out.println(prefijo);
+        }
+        Cadena [] losSubfijos = cadena.obtenerTodosLosSubfijos(cadena);
+        for (Cadena subfijo : losSubfijos) {
+            System.out.println(subfijo);
         }
     }
 }

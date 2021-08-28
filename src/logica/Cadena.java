@@ -144,8 +144,8 @@ public class Cadena extends Object {
      /**
      * REcibe una cadena y Devuelve todos los prefijos de una cadena (Si la cadena es vacia devuelva epsilon)
      * @author Víctor Hugo Morales Martínez (Vicnow)
-     * @param cadena - Subcadena "w"
-     * @return Array con todos los prefijos
+     * @param cadena - Cadena a saber todos los prefijos
+     * @return Array con todos los prefijos (Simpre regresaalmenos epsilon)
      */
     public Cadena [] obtenerTodosLosPrefijos (Cadena cadena){
         int longitud = cadena.length();
@@ -161,5 +161,27 @@ public class Cadena extends Object {
             contador++;
         }
         return prefijos;
+    }
+
+    /**
+     * REcibe una cadena y Devuelve todos los subfijos de una cadena (Si la cadena es vacia devuelva epsilon)
+     * @author Víctor Hugo Morales Martínez (Vicnow)
+     * @param cadena - Cadena a saber todos los subfijos
+     * @return Array con todos los subfijos (Simpre regresaalmenos epsilon)
+     */
+    public Cadena [] obtenerTodosLosSubfijos (Cadena cadena){
+        int longitud = cadena.length();
+        Cadena [] subfijos = new Cadena[longitud+1];
+        String subfijo;
+        int contador = longitud;
+        subfijos[longitud] = new Cadena("E");
+        for (int i = 0; i < longitud; i++) {
+            for (int j = longitud; j >= contador; j--) {
+                subfijo = simbolos.substring(0, contador);
+                subfijos[i] =new Cadena(subfijo);
+            }
+            contador--;
+        }
+        return subfijos;
     }
 }
