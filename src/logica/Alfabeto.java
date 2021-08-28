@@ -1,0 +1,48 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package logica;
+
+/**
+ * Un conjunto no vacío y finito de símbolos se conoce como alfabeto
+ * @author sauldelaotorres SIGMA MAYUSCULA
+ */
+public class Alfabeto {
+    /**
+     * Contenido es sigma minuscula
+     */
+    private String simbolosDeAlfabeto;
+    public Alfabeto(String simbolos) {
+        simbolosDeAlfabeto = simbolos;
+    }
+    public int length() {
+        return simbolosDeAlfabeto.length();
+    }
+    boolean pertenecerAlAlfabeto(Palabra palabra)  {
+        String simbolosDePalabra = palabra.getPalabra();
+        boolean laPalabraPerteneceAlAlfabeto = true;
+        int n = 0;
+        char ch = '0';
+        do {
+//            System.out.print( "Elija una: " );
+            ch = simbolosDePalabra.charAt(n++);
+        } while( estarEn( ch )  );
+        return n!=simbolosDePalabra.length();
+    }
+    private boolean estarEn( char ch ) {
+        for( int n=0; n<length(); n++ ) {
+            if( ch==simbolosDeAlfabeto.charAt(n) ) {
+                return true;
+                }
+            }
+        return false;
+    }
+    public boolean estaVacio() {
+        return length()==0;
+    }
+    public String toString() {
+        return this.simbolosDeAlfabeto;
+    }
+}
