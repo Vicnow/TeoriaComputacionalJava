@@ -8,7 +8,7 @@ package logica;
 /**
  * Una secuencia finita de símbolos de un determinado alfabeto se conoce
  * como palabra
- * @author sauldelaotorres
+ * @author Saul de la O Torres
  */
 public class Palabra {
     private String simbolosDePalabra;

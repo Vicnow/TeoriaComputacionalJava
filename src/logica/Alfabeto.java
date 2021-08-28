@@ -1,6 +1,6 @@
 /**
  * Un conjunto no vacío y finito de símbolos se conoce como alfabeto
- * @author sauldelaotorres
+ * @author Saul de la O Torres
  */
 
 

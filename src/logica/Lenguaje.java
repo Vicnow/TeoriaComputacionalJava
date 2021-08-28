@@ -10,7 +10,7 @@ import java.util.LinkedList;
 
 /**
  * Un lenguaje es un conjunto de palabras=cadenas
- * @author sauldelaotorres
+ * @author Saul de la O Torres
  */
 public class Lenguaje {
     private LinkedList<Cadena> cadenas;
