@@ -22,7 +22,13 @@ public class Cadena extends Object {
     public Cadena(String simbolos) {
         this.simbolos = simbolos;
     }
-    @Override
+    public String getCadena(){
+        return this.simbolos;
+    }
+    //@Override
+    public boolean pertenecerAlfabeto(Alfabeto alfabeto) {
+        return alfabeto.pertenecerAlfabeto(this);
+    }
     public boolean equals(Object objeto) {
         if(objeto==null) {
             return false;
@@ -142,7 +148,7 @@ public class Cadena extends Object {
     }
 
      /**
-     * REcibe una cadena y Devuelve todos los prefijos de una cadena (Si la cadena es vacia devuelva epsilon)
+     * Recibe una cadena y Devuelve todos los prefijos de una cadena (Si la cadena es vacia devuelva epsilon)
      * @author Víctor Hugo Morales Martínez (Vicnow)
      * @param cadena - Cadena a saber todos los prefijos
      * @return Array con todos los prefijos (Simpre regresaalmenos epsilon)

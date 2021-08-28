@@ -11,8 +11,8 @@ public class Alfabeto {
     public Alfabeto(String simbolos) {simbolosDeAlfabeto = simbolos;}
     public int length() {return simbolosDeAlfabeto.length();}
     
-    boolean pertenecerAlAlfabeto(Palabra palabra)  {
-        String simbolosDePalabra = palabra.getPalabra();
+    boolean pertenecerAlfabeto(Cadena palabra)  {
+        String simbolosDePalabra = palabra.getCadena();
         int n = 0;
         char ch = '0';
         do {
