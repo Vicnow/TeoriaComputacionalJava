@@ -11,12 +11,11 @@ public class Alfabeto {
     public Alfabeto(String simbolos) {simbolosDeAlfabeto = simbolos;}
     public int length() {return simbolosDeAlfabeto.length();}
     
-    boolean pertenecerAlfabeto(Cadena palabra)  {
+    boolean pertenecerAlfabeto(Cadena palabra) {
         String simbolosDePalabra = palabra.getCadena();
         int n = 0;
         char ch = '0';
         do {
-//            System.out.print( "Elija una: " );
             ch = simbolosDePalabra.charAt(n++);
         } while( estarEn( ch )  );
         return n!=simbolosDePalabra.length();
