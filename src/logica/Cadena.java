@@ -26,9 +26,9 @@ public class Cadena extends Object {
         return this.simbolos;
     }
     //@Override
-    public boolean pertenecerAlfabeto(Alfabeto alfabeto) {
-        return alfabeto.pertenecerAlfabeto(this);
-    }
+    // public boolean pertenecerAlfabeto(Alfabeto alfabeto) {
+    //     return alfabeto.pertenecerAlfabeto(this);
+    // }
     public boolean equals(Object objeto) {
         if(objeto==null) {
             return false;
@@ -189,5 +189,24 @@ public class Cadena extends Object {
             contador--;
         }
         return subfijos;
+    }
+    public boolean estarEnAlfabeto(Alfabeto alfabeto) {
+        if(alfabeto.isEmpty()){
+            return false;
+        }
+        String simbolosDePalabra = this.getCadena();
+        String [] simbolosDeAlfabeto = alfabeto.getAlfabeto();
+        int contador = 0;
+        for (int i = 0; i < alfabeto.size(); i++) {
+            for (int j = 0; j < this.length(); j++) {
+                if (simbolosDeAlfabeto[i].charAt(0)==simbolosDePalabra.charAt(j)) {
+                    contador++;
+                }
+            }
+        }
+        if (contador == simbolosDePalabra.length()) {
+            return true;
+        }
+        return false;
     }
 }

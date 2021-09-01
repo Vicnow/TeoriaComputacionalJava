@@ -181,4 +181,21 @@ public class Lenguaje {
         }
         return lenguajeIntersectado;
     }
+
+    public boolean estarEnAlfabeto(Alfabeto alfabeto) {
+        if(alfabeto.isEmpty()||this.isEmpty()){
+            return false;
+        }
+        Cadena []cadenasLenguaje = this.cadenasDeLenguaje();
+        int contador = 0;
+        for (Cadena cadena : cadenasLenguaje) {
+            if (cadena.estarEnAlfabeto(alfabeto)) {
+                contador++;
+            }
+        }
+        if (contador==this.size()) {
+            return true;
+        }
+        return false;
+    }
 }

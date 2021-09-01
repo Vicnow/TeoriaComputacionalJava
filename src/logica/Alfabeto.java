@@ -7,31 +7,60 @@
 package logica;
 
 public class Alfabeto {
-    private String simbolosDeAlfabeto;
-    public Alfabeto(String simbolos) {simbolosDeAlfabeto = simbolos;}
-    public int length() {return simbolosDeAlfabeto.length();}
-    
-    boolean pertenecerAlfabeto(Cadena palabra) {
-        String simbolosDePalabra = palabra.getCadena();
-        int n = 0;
-        char ch = '0';
-        do {
-            ch = simbolosDePalabra.charAt(n++);
-        } while( estarEn( ch )  );
-        return n!=simbolosDePalabra.length();
+    private String [] simbolosDeAlfabeto;
+    public Alfabeto(String simbolos) {
+        simbolosDeAlfabeto = simbolos.split(",");
+        if(simbolosDeAlfabeto[0]==""){
+            simbolosDeAlfabeto = null;
+        }
+        
     }
-    private boolean estarEn( char ch ) {
-        for( int n=0; n<length(); n++ ) {
-            if( ch==simbolosDeAlfabeto.charAt(n) ) {
-                return true;
-                }
-            }
+
+    public String [] getAlfabeto(){
+        return this.simbolosDeAlfabeto;
+    }
+
+    public boolean isEmpty() {
+        if (simbolosDeAlfabeto == null) {
+            return true;
+        }
         return false;
     }
-    public boolean estaVacio() {
-        return length()==0;
+
+    public int size() {
+        if(!this.isEmpty()){
+            int longitud = simbolosDeAlfabeto.length;
+            return longitud;
+        }
+        return 0;
     }
-    public String toString() {
-        return this.simbolosDeAlfabeto;
+
+    public String mostrarSimbolosAlfabeto(){
+        String simbolos = "";
+        if (this.isEmpty()){
+            simbolos += "No hay simbolos en el alfabeto";
+            return simbolos;
+        }
+        simbolos += "[";
+        for (int i = 0; i < simbolosDeAlfabeto.length; i++) {
+            simbolos += simbolosDeAlfabeto[i];
+            if (i!=simbolosDeAlfabeto.length-1) {
+                simbolos += ",";
+            }
+        }
+        simbolos += "]";
+        return simbolos;
+    }
+
+    public boolean perteneceAlfabeto(String simbolo){
+        if(this.isEmpty()){
+            return false;
+        }
+        for (int i = 0; i < simbolosDeAlfabeto.length; i++) {
+            if (simbolosDeAlfabeto[i].equals(simbolo)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
