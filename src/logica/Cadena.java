@@ -4,6 +4,7 @@
  * @author Saul de la O Torres
  */
 package logica;
+import java.util.ArrayList;
 
 /**Tipo de dato que guarda un string y puede hacer todas las operaciones relacionadas a una cadena*/
 public class Cadena extends Object {
@@ -157,39 +158,64 @@ public class Cadena extends Object {
         int longitud = cadena.length();
         Cadena [] prefijos = new Cadena[longitud+1];
         String prefijo;
-        int contador = 1;
         prefijos[0] = new Cadena("E");
         for (int i = 1; i <= longitud; i++) {
-            for (int j = 0; j < contador; j++) {
-                prefijo = simbolos.substring(0, contador);
-                prefijos[i] =new Cadena(prefijo);
-            }
-            contador++;
+            prefijo = simbolos.substring(0, i);
+            prefijos[i] =new Cadena(prefijo);
         }
         return prefijos;
     }
 
     /**
-     * REcibe una cadena y Devuelve todos los subfijos de una cadena (Si la cadena es vacia devuelva epsilon)
+     * Recibe una cadena y Devuelve todos los subfijos de una cadena (Si la cadena es vacia devuelva epsilon)
      * @author Víctor Hugo Morales Martínez (Vicnow)
      * @param cadena - Cadena a saber todos los subfijos
      * @return Array con todos los subfijos (Simpre regresaalmenos epsilon)
      */
     public Cadena [] obtenerTodosLosSubfijos (Cadena cadena){
         int longitud = cadena.length();
-        Cadena [] subfijos = new Cadena[longitud+1];
+        // Cadena [] subfijos = new Cadena[longitud+1];
+        Cadena [] subfijos = new Cadena[longitud];
         String subfijo;
-        int contador = longitud;
-        subfijos[longitud] = new Cadena("E");
+        // subfijos[longitud] = new Cadena("E");
         for (int i = 0; i < longitud; i++) {
-            for (int j = longitud; j >= contador; j--) {
-                subfijo = simbolos.substring(0, contador);
-                subfijos[i] =new Cadena(subfijo);
-            }
-            contador--;
+            subfijo = simbolos.substring(i, longitud);
+            subfijos[i] =new Cadena(subfijo);
         }
         return subfijos;
     }
+
+    /**
+     * Recibe una cadena y Devuelve todos los subcadenas de una cadena
+     * @author Víctor Hugo Morales Martínez (Vicnow)
+     * @param cadena - Cadena a saber todos las subcadenas
+     * @return ArrayList con todas los subcadenas
+     */
+    public ArrayList<Cadena> obtenerTodasLasSubcadenas (Cadena cadena){
+        ArrayList<Cadena> subcadenas = new ArrayList<Cadena>();
+        // Primera Parte
+        int x = 1;
+        int longitudCadena = cadena.length();
+        int y = longitudCadena-1;
+        String subcadenaTemp;
+        do {
+            subcadenaTemp = cadena.getCadena().substring(x, y);
+            subcadenas.add(new Cadena(subcadenaTemp));
+            y--;
+            if(x==y){
+                x++;
+                y = longitudCadena-1;
+            }
+        } while (x!=longitudCadena-1);
+        return subcadenas;
+    }
+
+    /**
+    * Recibe una alfabeto y muestra si la cadena pertenece a dicho alfabeto
+    * @author Víctor Hugo Morales Martínez (Vicnow)
+    * @param Alfabeto - Alfabeto a comparar simbolass
+    * @return True si los simbolos de la palabra estan en el alfabeto, False en caso conrario.
+    */
     public boolean estarEnAlfabeto(Alfabeto alfabeto) {
         if(alfabeto.isEmpty()){
             return false;

@@ -5,6 +5,7 @@
  */
 package implementacion;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 import logica.Alfabeto;
 import logica.Cadena;
@@ -21,8 +22,6 @@ public class TeoriaComputacional {
      */
     public static void main(String[] args) {
         // Asignamos valores a todos nuestras variables
-        Alfabeto alfabeto = new Alfabeto("a,b,c,d,e,f,g,h,i,j,k,l,m,n,ñ,o,p,q,r,s,t,u,v,w,x,y,z");
-        Cadena cadena = new Cadena("teoriacomputacional");
         Lenguaje lenguajeA = new Lenguaje();
         lenguajeA.insertarPalabra(new Cadena("123"));
         lenguajeA.insertarPalabra(new Cadena("abc"));
@@ -36,17 +35,31 @@ public class TeoriaComputacional {
         lenguajeC.insertarPalabra(new Cadena("eia"));
         lenguajeC.insertarPalabra(new Cadena("o"));
         Scanner scanner = new Scanner(System.in);
+        
         //Creando un Menu
         
+        System.out.println();
+        System.out.println("Teoria Computacional - Morales Martínez Víctor Hugo");
+        System.out.println("Agregue un alfabeto. (separando cada simbolo por comas ',')");
+        System.out.println("Ejemplo = a,b,c,d,f,e,1,3,4,ñ,A,B");
+        String opc = scanner.nextLine();
+        Alfabeto alfabeto = new Alfabeto(opc);
+        System.out.println();
+        System.out.println("Alfabeto agregado:"+alfabeto.mostrarSimbolosAlfabeto());
+        System.out.println("Agregue una Palabra (cadena) cuyos simbolos pertenezcan al alfabeto que agrego.");
+        System.out.println("Ejemplo = ABed1431ñ");
+        opc = scanner.nextLine();
+        Cadena cadena = new Cadena(opc);
+        System.out.println("Su Cadena: " + cadena.getCadena());
+        System.out.println();
         do {
-            System.out.println();
             System.out.println("Elija una opción");
-            System.out.println("1.-\tAlfabeto");
-            System.out.println("2.-\tCadenas");
+            System.out.println("1.-\tPractica 1 - Alfabeto");
+            System.out.println("2.-\tPractica 1 - Cadenas");
             System.out.println("3.-\tLenguajes");
             System.out.println("4.-\tExpresiones Regulares");
             System.out.println("0.-\tSalir");
-            String opc = scanner.nextLine();
+            opc = scanner.nextLine();
             System.out.println();
             switch (opc) {
                 case "1":
@@ -70,24 +83,24 @@ public class TeoriaComputacional {
                     /*Invertimos la cadena*/
                     System.out.println("Cadena invetida: "+cadena.invertir());
                     /*Obtenemos las subcadenas (xwy)de la cadena apartir de una subcadena "w" y las metemos en un arreglo"*/
-                    System.out.println("Subcadena a buscar = compu");
-                    Cadena [] subcadenas = cadena.obtenerSubcadena(new Cadena("compu"));
-                    if(subcadenas!=null) {
-                        for(Cadena subcadena: subcadenas) {
-                            System.out.println(subcadena);
-                        }
-                    }
-                    /*Obtenemos el prefijo de la cadena en base a una cadena que empice desde el primer simbolo de nuestra cadena*/
-                    System.out.println("prefijo = teoria");
-                    Cadena [] lasCadenas = cadena.obtenerPrefijo(new Cadena("teoria"));
-                    if(lasCadenas==null) {
-                        System.out.println( "No hay prefijo" );
-                        }
-                    else {
-                        for(Cadena laCadena: lasCadenas) {
-                            System.out.println(laCadena);
-                        }
-                    }
+                    // System.out.println("Subcadena a buscar = compu");
+                    // Cadena [] subcadenas = cadena.obtenerSubcadena(new Cadena("compu"));
+                    // if(subcadenas!=null) {
+                    //     for(Cadena subcadena: subcadenas) {
+                    //         System.out.println(subcadena);
+                    //     }
+                    // }
+                    // /*Obtenemos el prefijo de la cadena en base a una cadena que empice desde el primer simbolo de nuestra cadena*/
+                    // System.out.println("prefijo = teoria");
+                    // Cadena [] lasCadenas = cadena.obtenerPrefijo(new Cadena("teoria"));
+                    // if(lasCadenas==null) {
+                    //     System.out.println( "No hay prefijo" );
+                    //     }
+                    // else {
+                    //     for(Cadena laCadena: lasCadenas) {
+                    //         System.out.println(laCadena);
+                    //     }
+                    // }
 
                     Cadena [] losPrefijos = cadena.obtenerTodosLosPrefijos(cadena);
                     System.out.println("Todos los prefijos de la cadena:");
@@ -100,6 +113,13 @@ public class TeoriaComputacional {
                     for (Cadena subfijo : losSubfijos) {
                         System.out.println(subfijo);
                     }
+                    System.out.println();
+                    System.out.println("Todos las subcadenas de la cadena:");
+                    ArrayList lasSubcadenas = cadena.obtenerTodasLasSubcadenas(cadena);
+                    for (int i = 0; i < lasSubcadenas.size(); i++) {
+                        System.out.println(lasSubcadenas.get(i));
+                    }
+                    System.out.println();
                     System.out.println("Presione cualquier tecla para continuar");
                     opc = scanner.nextLine();
                     break;
