@@ -34,6 +34,14 @@ public class Alfabeto {
         }
         return 0;
     }
+    public int posicionSimbolo(String simbolo){
+        for (int i = 0; i < simbolosDeAlfabeto.length; i++) {
+            if(simbolosDeAlfabeto[i].equals(simbolo)){
+                return i;
+            }
+        }
+        return 0;
+    }
 
     public String mostrarSimbolosAlfabeto(){
         String simbolos = "";

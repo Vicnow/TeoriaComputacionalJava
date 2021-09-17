@@ -10,6 +10,7 @@ import java.util.Scanner;
 import logica.Alfabeto;
 import logica.Cadena;
 import logica.Lenguaje;
+import logica.AFD;
 
 /**
  *
@@ -57,7 +58,7 @@ public class TeoriaComputacional {
             System.out.println("1.-\tPractica 1 - Alfabeto");
             System.out.println("2.-\tPractica 1 - Cadenas");
             System.out.println("3.-\tLenguajes");
-            System.out.println("4.-\tExpresiones Regulares");
+            System.out.println("4.-\tAFD");
             System.out.println("0.-\tSalir");
             opc = scanner.nextLine();
             System.out.println();
@@ -161,6 +162,47 @@ public class TeoriaComputacional {
                     opc = scanner.nextLine();
                     break;
                 case "4":
+                    System.out.println("Ingrese los estados del AFD con la siguiente sintaxis = Q0,Q1,Q2,....,Qn");
+                    String estados = "";
+                    opc = scanner.nextLine();
+                    estados = opc;
+                    System.out.println("Ingrese el estado Inicial con la siguiente sintaxis = Qn");
+                    String estadoInicial= "";
+                    opc = scanner.nextLine();
+                    estadoInicial = opc;
+                    System.out.println("Ingrese los estados de Aceptación con la siguiente sintaxis = Q2,Q3,etc");
+                    String estadosAceptacion= "";
+                    opc = scanner.nextLine();
+                    estadosAceptacion = opc;
+                    System.out.println("Ingrese los simbolos del alfabeto del AFD con la siguiente sintaxis = 0,1,2,etc");
+                    String simbolosAlfabeto= "";
+                    opc = scanner.nextLine();
+                    simbolosAlfabeto = opc;
+                    AFD automataFinito = new AFD(estados,estadoInicial, estadosAceptacion, simbolosAlfabeto);
+                    for (int i = 0; i < automataFinito.totalTransiciones(); i++) {
+                        System.out.println("Agrega la transicion "+(i+1)+" de "+automataFinito.totalTransiciones());
+                        System.err.print("Estado: ");
+                        String estado= "";
+                        opc = scanner.nextLine();
+                        estado = opc;
+                        System.err.print("Simbolo: ");
+                        String simbolo= "";
+                        opc = scanner.nextLine();
+                        simbolo= opc;
+                        System.err.print("Estado resultado: ");
+                        String estadoSiguiente= "";
+                        opc = scanner.nextLine();
+                        estadoSiguiente = opc;
+                        automataFinito.agregarTrancicion(estado, simbolo, estadoSiguiente);
+                    }
+                    automataFinito.mostarDatos();
+                    System.out.println("Ingrese una palabra para comprobar en el AFD");
+                    String cadenaAFD= "";
+                    opc = scanner.nextLine();
+                    cadenaAFD = opc;
+                    automataFinito.ingresarCadena(cadenaAFD);
+                    automataFinito.comprobarCadenaEnAFD();
+                    System.out.println("Autor: Morales Martinez Víctor Hugo 2020630281");
                     System.out.println("Presione cualquier tecla para continuar");
                     opc = scanner.nextLine();
                     break;
