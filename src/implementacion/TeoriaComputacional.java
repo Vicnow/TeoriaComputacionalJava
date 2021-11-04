@@ -58,7 +58,8 @@ public class TeoriaComputacional {
             System.out.println("1.-\tPractica 1 - Alfabeto");
             System.out.println("2.-\tPractica 1 - Cadenas");
             System.out.println("3.-\tLenguajes");
-            System.out.println("4.-\tAFD");
+            System.out.println("4.-\tExpresion Regular");
+            System.out.println("5.-\tAFD");
             System.out.println("0.-\tSalir");
             opc = scanner.nextLine();
             System.out.println();
@@ -162,6 +163,24 @@ public class TeoriaComputacional {
                     opc = scanner.nextLine();
                     break;
                 case "4":
+                    alfabeto = new Alfabeto("a,b");
+                    System.out.println("Alfabeto a utilizar:"+alfabeto.mostrarSimbolosAlfabeto());
+                    System.out.println("Ingresa una expresión para saber si el lenguaje es Regular");
+                    opc = scanner.nextLine();
+                    Lenguaje lenguajeRegular = new Lenguaje();
+                    lenguajeRegular.insertarPalabra(new Cadena(opc));
+                    System.out.println("El lenguaje pertenece al alfabeto?:" + lenguajeRegular.estarEnAlfabeto(alfabeto));
+                    System.out.println();
+                    if (lenguajeRegular.estarEnAlfabeto(alfabeto)) {
+                        System.out.println("La expresión pertenece a un Lenguaje Regular");
+                    }else{
+                        System.out.println("La expresión NO pertenece a un lenguaje Regular - expresión invalida para este alfabeto");
+                    }
+                    System.out.println();
+                    System.out.println("Presione cualquier tecla para continuar");
+                    opc = scanner.nextLine();
+                    break;
+                case "5":
                     System.out.println("Ingrese los estados del AFD con la siguiente sintaxis = Q0,Q1,Q2,....,Qn");
                     String estados = "";
                     opc = scanner.nextLine();
